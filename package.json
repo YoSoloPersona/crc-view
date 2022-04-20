@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ./dist/main.js"
   },
   "keywords": [
     "typescript",
@@ -18,6 +19,7 @@
   "author": "Yolik",
   "license": "ISC",
   "devDependencies": {
+    "electron": "^18.0.4",
     "typescript": "^4.6.3"
   }
 }
