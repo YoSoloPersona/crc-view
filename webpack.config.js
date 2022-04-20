@@ -39,7 +39,7 @@ const render = {
     mode,
     target: 'electron-renderer',
     watch,
-    entry: './src/index.ts',
+    entry: './src/components/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js'
