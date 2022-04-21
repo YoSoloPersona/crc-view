@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
  * @returns return root component.
  */
 function RootComponent() {
-    return (<div>React work!</div>);
+    return <div>React work!</div>;
 }
 
 // ========================================
