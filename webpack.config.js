@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV == 'production';
 const watch = process.env.NODE_ENV == 'development';
+const outDir = path.resolve(__dirname, 'app', 'dist');
 
 const stylesHandler = mode ? MiniCssExtractPlugin.loader : 'style-loader';
 
@@ -15,7 +16,7 @@ const main = {
     watch,
     entry: './src/main.ts',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: outDir,
         filename: '[name].js'
     },
     resolve: {
@@ -39,10 +40,10 @@ const render = {
     mode,
     target: 'electron-renderer',
     watch,
-    entry: './src/components/index.tsx',
+    entry: './src/components/root.tsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'index.js'
+        path: outDir,
+        filename: 'components/root.js'
     },
     plugins: [
         new HtmlWebpackPlugin({

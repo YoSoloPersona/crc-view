@@ -1,0 +1,12 @@
+{
+    "name": "electron-crc-view",
+    "version": "1.0.0",
+    "description": "Checksum view application.",
+    "main": "./dist/main.js",
+    "author": {
+        "name": "Yolik",
+        "email": "yo.solo.persona@gmail.com"
+    },
+    "dependencies": {},
+    "license": "ISC"
+}

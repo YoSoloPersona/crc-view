@@ -1,6 +1,6 @@
 // React
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 /**
  * Create root component application.
@@ -11,5 +11,5 @@ function RootComponent() {
 }
 
 // ========================================
-
-ReactDOM.render(<RootComponent />, document.getElementById('root'));
+const root = createRoot(document.getElementById('app') ?? document.body);
+root.render(<RootComponent />, );

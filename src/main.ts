@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { app, BrowserWindow } from 'electron';
 
 // Храните глобальную ссылку на объект окна, если вы этого не сделаете, окно будет
@@ -16,7 +17,7 @@ function createWindow() {
     });
 
     // и загрузить index.html приложения.
-    win.loadFile('index.html');
+    win.loadURL(`file://${path.resolve(__dirname, 'index.html')}`);
 
     // Отображаем средства разработчика.
     // win.webContents.openDevTools();
