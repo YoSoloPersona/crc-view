@@ -1,11 +1,13 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV == 'production';
 const watch = process.env.NODE_ENV == 'development';
+const devtool =  (process.env.NODE_ENV == 'development') ? 'eval' : 'none';
 const outDir = path.resolve(__dirname, 'app', 'dist');
 
 const stylesHandler = mode ? MiniCssExtractPlugin.loader : 'style-loader';
@@ -14,6 +16,10 @@ const main = {
     mode,
     target: 'electron-main',
     watch,
+    devtool: false,
+    plugins: [new webpack.SourceMapDevToolPlugin({
+        
+    })],
     entry: './src/main.ts',
     output: {
         path: outDir,
@@ -40,7 +46,12 @@ const render = {
     mode,
     target: 'electron-renderer',
     watch,
-    entry: './src/components/root.tsx',
+    devtool: false,
+    plugins: [new webpack.SourceMapDevToolPlugin({})],
+    entry: 
+    {
+        react: './src/components/root.tsx'
+    },
     output: {
         path: outDir,
         filename: 'components/root.js'

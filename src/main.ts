@@ -1,6 +1,9 @@
 import * as path from 'path';
 import { app, BrowserWindow } from 'electron';
 
+// local
+import './util/help';
+
 // Храните глобальную ссылку на объект окна, если вы этого не сделаете, окно будет
 // автоматичес;ки закрываться, когда объект JavaScript собирает мусор.
 let win: BrowserWindow | null;
@@ -11,7 +14,8 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false
         },
         autoHideMenuBar: true
     });

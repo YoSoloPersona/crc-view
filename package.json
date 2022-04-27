@@ -1,6 +1,6 @@
 {
   "name": "electron-crc-view",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Checksum view application.",
   "main": "./dist/main.js",
   "scripts": {
@@ -51,8 +51,12 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.6.2",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "yo-data-processing": "^0.9.0"
   },
   "build": {
     "productName": "crc-view",
