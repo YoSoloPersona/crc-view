@@ -7,27 +7,28 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV == 'production';
 const watch = process.env.NODE_ENV == 'development';
-const devtool =  (process.env.NODE_ENV == 'development') ? 'eval' : 'none';
 const outDir = path.resolve(__dirname, 'app', 'dist');
 
 const stylesHandler = mode ? MiniCssExtractPlugin.loader : 'style-loader';
 
-const main = {
+const base = {
     mode,
-    target: 'electron-main',
     watch,
     devtool: false,
-    plugins: [new webpack.SourceMapDevToolPlugin({
-        
-    })],
+    plugins: [new webpack.SourceMapDevToolPlugin({})],
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js']
+    }
+};
+
+const main = Object.assign(base, {
+    target: 'electron-main',
     entry: './src/main.ts',
     output: {
         path: outDir,
         filename: '[name].js'
     },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js']
-    },
+
     module: {
         rules: [
             {
@@ -40,16 +41,12 @@ const main = {
             // Learn more about loaders from https://webpack.js.org/loaders/
         ]
     }
-};
+});
 
 const render = {
-    mode,
+    ...base,
     target: 'electron-renderer',
-    watch,
-    devtool: false,
-    plugins: [new webpack.SourceMapDevToolPlugin({})],
-    entry: 
-    {
+    entry: {
         react: './src/components/root.tsx'
     },
     output: {
@@ -58,15 +55,12 @@ const render = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/index.html'
         })
 
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js']
-    },
     module: {
         rules: [
             {
